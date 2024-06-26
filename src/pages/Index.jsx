@@ -27,6 +27,10 @@ const Index = () => {
         <Heading as="h1" size="xl">RV Repair Estimate Builder</Heading>
         <Divider />
         <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Estimate#</Heading>
+          <Input type="text" value={estimate} onChange={(e) => setEstimate(e.target.value)} />
+        </Box>
+        <Box width="100%">
           <Heading as="h2" size="md" mb={2}>First Name</Heading>
           <Input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
         </Box>
@@ -47,18 +51,21 @@ const Index = () => {
           <Input type="text" value={vin} onChange={(e) => setVin(e.target.value)} />
         </Box>
         <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Estimate#</Heading>
-          <Input type="text" value={estimate} onChange={(e) => setEstimate(e.target.value)} />
-        </Box>
-        <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Advisor</Heading>
           <Input type="text" value={advisor} onChange={(e) => setAdvisor(e.target.value)} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Customer Pay Type</Heading>
           <Select placeholder="Select option" value={customerPayType} onChange={(e) => setCustomerPayType(e.target.value)}>
-            <option value="customerPay">Customer Pay</option>
+            <option value="extWarranty">Ext Warranty</option>
+            <option value="insurance">Insurance</option>
+            <option value="rvStation">RV Station</option>
+            <option value="warranty">Warranty</option>
           </Select>
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Deductible</Heading>
+          <Input type="number" placeholder="$" />
         </Box>
         <Divider />
         <Box width="100%">
