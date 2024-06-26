@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, VStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { saveAs } from 'file-saver';
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -66,6 +67,18 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
     `;
 
     setFormattedEstimate(formattedEstimate);
+  };
+
+  const saveEstimate = () => {
+    const blob = new Blob([formattedEstimate], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "estimate.txt");
+  };
+
+  const printEstimate = () => {
+    const printWindow = window.open("", "_blank");
+    printWindow.document.write(`<pre>${formattedEstimate}</pre>`);
+    printWindow.document.close();
+    printWindow.print();
   };
 
   return (
@@ -205,13 +218,16 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Text>{calculateTotal()}</Text>
           </Box>
         </SimpleGrid>
-        <Button colorScheme="blue" onClick={formatEstimate}>Format Estimate</Button>
         {formattedEstimate && (
           <Box width="100%" mt={4} p={4} borderWidth="1px" borderRadius="md">
             <Heading as="h2" size="md" mb={2}>Formatted Estimate</Heading>
             <pre>{formattedEstimate}</pre>
           </Box>
         )}
+        <Flex width="100%" justifyContent="space-between" mt={4}>
+          <Button colorScheme="blue" onClick={saveEstimate}>Save Estimate</Button>
+          <Button colorScheme="blue" onClick={printEstimate}>Print Estimate</Button>
+        </Flex>
       </VStack>
     </Container>
   );
