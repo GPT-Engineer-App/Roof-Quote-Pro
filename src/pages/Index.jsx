@@ -53,9 +53,9 @@ const Index = () => {
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Advisor</Heading>
           <Select placeholder="Select Service Advisor" value={advisor} onChange={(e) => setAdvisor(e.target.value)}>
-            <option value="advisor1">Advisor 1</option>
-            <option value="advisor2">Advisor 2</option>
-            <option value="advisor3">Advisor 3</option>
+            <option value="Mark.W">Mark.W</option>
+            <option value="Alicia.E">Alicia.E</option>
+            <option value="Hunter.S">Hunter.S</option>
           </Select>
         </Box>
         <Box width="100%">
