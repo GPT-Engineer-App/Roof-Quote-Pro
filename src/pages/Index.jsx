@@ -146,6 +146,11 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
             </InputGroup>
+            <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Tax</Heading>
             <Text>{calculateTax()}</Text>
             <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
@@ -198,11 +203,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <InputGroup>
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
             </InputGroup>
           </Box>
         </SimpleGrid>
