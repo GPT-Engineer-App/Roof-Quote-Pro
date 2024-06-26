@@ -89,9 +89,9 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
 
   return (
     <Container centerContent maxW="container.xl" py={10}>
-      <Flex width="100%" justifyContent="space-between" alignItems="center" mb={4}>
-        <Image src="/images/new-company-logo.png" alt="Company Logo" boxSize="100px" />
-        <Box textAlign="right">
+      <Box position="relative" width="100%" height="150px">
+        <Image src="/images/new-company-logo.png" alt="Company Logo" objectFit="cover" width="100%" height="100%" />
+        <Box position="absolute" top="0" right="0" p={4} color="white" textAlign="right">
           <Text>Mark Williamson</Text>
           <Text>Service Advisor</Text>
           <Text>RV Station</Text>
@@ -99,7 +99,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Text>580-579-5036</Text>
           <Text>mark@rvstation.com</Text>
         </Box>
-      </Flex>
+      </Box>
       <VStack spacing={4} width="100%">
         <Heading as="h1" size="xl" textAlign="center">
           ROOF REPAIR ESTIMATE
