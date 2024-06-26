@@ -163,10 +163,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Tax</Heading>
-          <Input type="number" value={taxRate} onChange={(e) => setTaxRate(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Hrs</Heading>
           <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
         </Box>
