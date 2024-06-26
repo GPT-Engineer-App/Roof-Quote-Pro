@@ -218,10 +218,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
             </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Tax</Heading>
-            <Text>{calculateTax()}</Text>
-            <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
-            <Text>{calculateTotal()}</Text>
           </Box>
         </SimpleGrid>
         {formattedEstimate && (
@@ -230,6 +226,10 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <pre>{formattedEstimate}</pre>
           </Box>
         )}
+        <Heading as="h2" size="md" mb={2}>Tax</Heading>
+        <Text>{calculateTax()}</Text>
+        <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
+        <Text>{calculateTotal()}</Text>
         <Flex width="100%" justifyContent="space-between" mt={4}>
           <Button
             colorScheme={useColorModeValue("blue", "teal")}
