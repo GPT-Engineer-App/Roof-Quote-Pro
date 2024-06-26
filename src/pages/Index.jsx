@@ -152,6 +152,8 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Text>{calculateTotal()}</Text>
           </Box>
           <Box>
+            <Heading as="h2" size="md" mb={2}>Date</Heading>
+            <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
             <Heading as="h2" size="md" mb={2}>Roof Kit</Heading>
             <InputGroup>
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
@@ -202,8 +204,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
             </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Date</Heading>
-            <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
           </Box>
         </SimpleGrid>
         <Button colorScheme="blue" onClick={formatEstimate}>Format Estimate</Button>
