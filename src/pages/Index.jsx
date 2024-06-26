@@ -150,36 +150,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             </InputGroup>
             <Heading as="h2" size="md" mb={2}>Labor</Heading>
             <Input type="number" value={calculateLabor()} isReadOnly />
-            <Heading as="h2" size="md" mb={2}>Roof Kit</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Roof Membrane</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>SLF LVL DICOR</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>NON LVL DICOR</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>ROOF SCREWS</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={roofScrews} onChange={(e) => setRoofScrews(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>GLUE</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
-            </InputGroup>
           </Box>
           <Box>
             <Heading as="h2" size="md" mb={2}>Parts</Heading>
