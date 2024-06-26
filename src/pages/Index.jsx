@@ -52,10 +52,14 @@ const Index = () => {
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Advisor</Heading>
-          <Input type="text" value={advisor} onChange={(e) => setAdvisor(e.target.value)} />
+          <Select placeholder="Select Service Advisor" value={advisor} onChange={(e) => setAdvisor(e.target.value)}>
+            <option value="advisor1">Advisor 1</option>
+            <option value="advisor2">Advisor 2</option>
+            <option value="advisor3">Advisor 3</option>
+          </Select>
         </Box>
         <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Customer Pay Type</Heading>
+          <Heading as="h2" size="md" mb={2}>Payment Type</Heading>
           <Select placeholder="Select option" value={customerPayType} onChange={(e) => setCustomerPayType(e.target.value)}>
             <option value="extWarranty">Ext Warranty</option>
             <option value="insurance">Insurance</option>
