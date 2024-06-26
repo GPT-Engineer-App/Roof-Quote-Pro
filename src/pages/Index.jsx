@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea } from "@chakra-ui/react";
+import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button } from "@chakra-ui/react";
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -21,6 +21,28 @@ const Index = () => {
 
   const calculateTax = () => (parts + labor + extras + shopSupplies + sublet) * (taxRate / 100);
   const calculateTotal = () => parts + labor + extras + shopSupplies + sublet + calculateTax();
+
+  const formatEstimate = () => {
+    return `
+Formula to calculate labor sum:
+60HRS X 175/HR = $${labor.toFixed(2)}
+
+ROOF MEMBRANE: $1,825.14
+ROOF KIT: $485.26
+SLF LVL DICOR: $685.16
+NON LVL DICIR: $355.72
+ROOF SCREWS: $76.28
+GLUE: $96.81
+
+Shop Supplies: $${shopSupplies.toFixed(2)}
+PARTS: $${parts.toFixed(2)}
+LABOR: $${labor.toFixed(2)}
+TAX (${taxRate}%): $${calculateTax().toFixed(2)}
+TOTAL: $${calculateTotal().toFixed(2)}
+
+Formula to calculate Tax sum
+    `;
+  };
 
   return (
     <Container centerContent maxW="container.md" py={10}>
@@ -113,6 +135,11 @@ const Index = () => {
             <Text fontSize="lg">${calculateTotal().toFixed(2)}</Text>
           </HStack>
         </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Formatted Estimate</Heading>
+          <Textarea value={formatEstimate()} readOnly />
+        </Box>
+        <Button colorScheme="blue" onClick={() => alert("Estimate added!")}>Add Estimate</Button>
       </VStack>
     </Container>
   );
