@@ -140,6 +140,8 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
             <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
+            <Heading as="h2" size="md" mb={2}>Notes</Heading>
+            <Textarea value={0} isReadOnly />
             <Heading as="h2" size="md" mb={2}>Parts</Heading>
             <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Labor</Heading>
@@ -150,8 +152,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Extras</Heading>
             <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
-            <Heading as="h2" size="md" mb={2}>Notes</Heading>
-            <Textarea value={0} isReadOnly />
           </Box>
           <Box>
             <Heading as="h2" size="md" mb={2}>Tax</Heading>
