@@ -28,11 +28,12 @@ const Index = () => {
   const [customerPayType, setCustomerPayType] = useState("");
   const [repairDescription, setRepairDescription] = useState("UPON INSPECTION, FOUND TRAILER TO BE DAMAGED: FOUND DAMAGE DONE TO MEMBRANE OF THE ROOF MEMBRANE ON TRAILER. POSSIBLY BY TREE BRANCH OR HAIL. NEED TO REMOVE ALL COMPONENTS (A/C UNITS, ATTIC VENTS, COVERS, ANTENNAS…ETC.) REMOVE MENBRANE. INSPECT OSB PLYWOOD FOR DAMAGE, REPLACE/OVERLAY IF NEEDED. LAY GLUE AND NEW MEMBRANE AND REINSTALL ALL COMPONENTS (CHECK FOR OPERATION).");
 
+  const [deductible, setDeductible] = useState(0);
   const [formattedEstimate, setFormattedEstimate] = useState("");
 
   const calculateLabor = () => hrs * laborRate;
   const calculateTax = () => (parts + extras + shopSupplies + sublet) * 0.0825;
-  const calculateTotal = () => parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax() + additionalParts;
+  const calculateTotal = () => parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax() + additionalParts - deductible;
 
   const formatEstimate = () => {
     const laborSum = `${hrs}HRS X ${laborRate}/HR = $${calculateLabor().toFixed(2)}`;
@@ -179,7 +180,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Deductible</Heading>
-          <Input type="number" placeholder="$" />
+          <Input type="number" value={deductible} onChange={(e) => setDeductible(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <HStack justifyContent="space-between">
