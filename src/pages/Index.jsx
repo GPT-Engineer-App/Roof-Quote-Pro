@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, Grid, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid } from "@chakra-ui/react";
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -116,13 +116,13 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Textarea value={repairDescription} onChange={(e) => setRepairDescription(e.target.value)} />
           </Box>
           <Box>
-            <Heading as="h2" size="md" mb={2}>ROOF KIT</Heading>
+            <Heading as="h2" size="md" mb={2}>Roof Kit</Heading>
             <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
-            <Heading as="h2" size="md" mb={2}>ROOF MEMBRANE</Heading>
+            <Heading as="h2" size="md" mb={2}>Roof Membrane</Heading>
             <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>SLF LVL DICOR</Heading>
             <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
-            <Heading as="h2" size="md" mb={2}>NON LVL DICIR</Heading>
+            <Heading as="h2" size="md" mb={2}>NON LVL DICOR</Heading>
             <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>ROOF SCREWS</Heading>
             <Input type="number" value={roofScrews} onChange={(e) => setRoofScrews(parseFloat(e.target.value))} />
@@ -130,22 +130,30 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
             <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
-            <Heading as="h2" size="md" mb={2}>Extras</Heading>
-            <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
-            <Heading as="h2" size="md" mb={2}>Sublet</Heading>
-            <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
-            <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
-            <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Parts</Heading>
             <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
+          </Box>
+          <Box>
             <Heading as="h2" size="md" mb={2}>Hrs</Heading>
             <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
             <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
+            <Heading as="h2" size="md" mb={2}>Sublet</Heading>
+            <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
+            <Heading as="h2" size="md" mb={2}>Extras</Heading>
+            <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Labor</Heading>
             <Input type="number" value={calculateLabor()} isReadOnly />
-            <Heading as="h2" size="md" mb={2}>Deductible</Heading>
-            <Input type="number" value={deductible} onChange={(e) => setDeductible(parseFloat(e.target.value))} />
+            <Heading as="h2" size="md" mb={2}>Notes</Heading>
+            <Textarea value={0} isReadOnly />
+          </Box>
+          <Box>
+            <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
+            <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
+            <Heading as="h2" size="md" mb={2}>Tax</Heading>
+            <Input type="number" value={calculateTax()} isReadOnly />
+            <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
+            <Input type="number" value={calculateTotal()} isReadOnly />
           </Box>
         </SimpleGrid>
         <Box width="100%">
