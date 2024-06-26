@@ -9,7 +9,6 @@ const Index = () => {
   const [sublet, setSublet] = useState(0);
   const [hrs, setHrs] = useState(60);
   const [laborRate, setLaborRate] = useState(175);
-  const [deductible, setDeductible] = useState(1000);
 
   const [roofMembrane, setRoofMembrane] = useState(1825.14);
   const [roofKit, setRoofKit] = useState(485.26);
@@ -33,7 +32,7 @@ const Index = () => {
 
   const calculateLabor = () => hrs * laborRate;
   const calculateTax = () => (parts + extras + shopSupplies + sublet) * 0.0825;
-  const calculateTotal = () => parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax() + additionalParts - deductible;
+  const calculateTotal = () => parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax() + additionalParts;
 
   const formatEstimate = () => {
     const laborSum = `${hrs}HRS X ${laborRate}/HR = $${calculateLabor().toFixed(2)}`;
@@ -57,7 +56,6 @@ Shop Supplies: $${shopSupplies.toFixed(2)}
 PARTS: $${parts.toFixed(2)}
 LABOR: $${calculateLabor().toFixed(2)}
 TAX (${taxRate}%): $${calculateTax().toFixed(2)}
-DEDUCTIBLE: $${deductible.toFixed(2)}
 TOTAL: $${calculateTotal().toFixed(2)}
 
 Formula to calculate Tax sum:
@@ -121,67 +119,67 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         <Divider />
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>ROOF KIT</Heading>
-          <Input type="number" value={`$${roofKit}`} onChange={(e) => setRoofKit(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>ROOF MEMBRANE</Heading>
-          <Input type="number" value={`$${roofMembrane}`} onChange={(e) => setRoofMembrane(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>SLF LVL DICOR</Heading>
-          <Input type="number" value={`$${slfLvlDicor}`} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>NON LVL DICIR</Heading>
-          <Input type="number" value={`$${nonLvlDicir}`} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>ROOF SCREWS</Heading>
-          <Input type="number" value={`$${roofScrews}`} onChange={(e) => setRoofScrews(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={roofScrews} onChange={(e) => setRoofScrews(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>GLUE</Heading>
-          <Input type="number" value={`$${glue}`} onChange={(e) => setGlue(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
-          <Input type="number" value={`$${additionalParts}`} onChange={(e) => setAdditionalParts(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Extras</Heading>
-          <Input type="number" value={`$${extras}`} onChange={(e) => setExtras(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Sublet</Heading>
-          <Input type="number" value={`$${sublet}`} onChange={(e) => setSublet(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
-          <Input type="number" value={`$${shopSupplies}`} onChange={(e) => setShopSupplies(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Parts</Heading>
-          <Input type="number" value={`$${parts}`} onChange={(e) => setParts(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Tax</Heading>
-          <Input type="number" value={`$${taxRate}`} onChange={(e) => setTaxRate(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={taxRate} onChange={(e) => setTaxRate(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Hrs</Heading>
-          <Input type="number" value={`$${hrs}`} onChange={(e) => setHrs(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
-          <Input type="number" value={`$${laborRate}`} onChange={(e) => setLaborRate(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Labor</Heading>
-          <Input type="number" value={`$${calculateLabor()}`} isReadOnly />
+          <Input type="number" value={calculateLabor()} isReadOnly />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Deductible</Heading>
-          <Input type="number" value={`$${deductible}`} onChange={(e) => setDeductible(parseFloat(e.target.value.replace('$', '')))} />
+          <Input type="number" placeholder="$" />
         </Box>
         <Box width="100%">
           <HStack justifyContent="space-between">
