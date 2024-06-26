@@ -27,9 +27,11 @@ const Index = () => {
   const [advisor, setAdvisor] = useState("");
   const [customerPayType, setCustomerPayType] = useState("");
   const [repairDescription, setRepairDescription] = useState("UPON INSPECTION, FOUND TRAILER TO BE DAMAGED: FOUND DAMAGE DONE TO MEMBRANE OF THE ROOF MEMBRANE ON TRAILER. POSSIBLY BY TREE BRANCH OR HAIL. NEED TO REMOVE ALL COMPONENTS (A/C UNITS, ATTIC VENTS, COVERS, ANTENNAS…ETC.) REMOVE MENBRANE. INSPECT OSB PLYWOOD FOR DAMAGE, REPLACE/OVERLAY IF NEEDED. LAY GLUE AND NEW MEMBRANE AND REINSTALL ALL COMPONENTS (CHECK FOR OPERATION).");
+  const [notes, setNotes] = useState("Notes");
 
   const [deductible, setDeductible] = useState(0);
   const [formattedEstimate, setFormattedEstimate] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
 
   const calculateLabor = () => hrs * laborRate;
   const calculateTax = () => `$${Math.ceil((parts + extras + shopSupplies + sublet) * 0.0825).toFixed(2)}`;
@@ -111,6 +113,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <option value="insurance">Insurance</option>
               <option value="rvStation">RV Station</option>
               <option value="warranty">Warranty</option>
+              <option value="customerPay">Customer Pay</option>
             </Select>
             <Heading as="h2" size="md" mb={2}>Deductible</Heading>
             <Select placeholder="Select Deductible" value={deductible} onChange={(e) => setDeductible(parseFloat(e.target.value))}>
@@ -125,7 +128,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Heading as="h2" size="md" mb={2}>Repair Description</Heading>
             <Textarea value={repairDescription} onChange={(e) => setRepairDescription(e.target.value)} />
             <Heading as="h2" size="md" mb={2}>Notes</Heading>
-            <Textarea value={0} isReadOnly />
+            <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} />
             <Heading as="h2" size="md" mb={2}>Hrs</Heading>
             <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
@@ -143,6 +146,10 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
             </InputGroup>
+            <Heading as="h2" size="md" mb={2}>Tax</Heading>
+            <Text>{calculateTax()}</Text>
+            <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
+            <Text>{calculateTotal()}</Text>
           </Box>
           <Box>
             <Heading as="h2" size="md" mb={2}>Roof Kit</Heading>
@@ -195,10 +202,8 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
             </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Tax</Heading>
-            <Text>{calculateTax()}</Text>
-            <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
-            <Text>{calculateTotal()}</Text>
+            <Heading as="h2" size="md" mb={2}>Date</Heading>
+            <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
           </Box>
         </SimpleGrid>
         <Button colorScheme="blue" onClick={formatEstimate}>Format Estimate</Button>
