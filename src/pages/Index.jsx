@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Container, VStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid } from "@chakra-ui/react";
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -160,16 +160,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Input type="number" value={calculateTotal()} isReadOnly />
           </Box>
         </SimpleGrid>
-        <Box width="100%">
-          <HStack justifyContent="space-between">
-            <Text fontSize="lg">Tax:</Text>
-            <Text fontSize="lg">${calculateTax().toFixed(2)}</Text>
-          </HStack>
-          <HStack justifyContent="space-between">
-            <Text fontSize="lg">Total:</Text>
-            <Text fontSize="lg">${calculateTotal().toFixed(2)}</Text>
-          </HStack>
-        </Box>
         <Button colorScheme="blue" onClick={formatEstimate}>Format Estimate</Button>
         {formattedEstimate && (
           <Box width="100%" mt={4} p={4} borderWidth="1px" borderRadius="md">
