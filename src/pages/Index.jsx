@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, VStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Container, VStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid, InputGroup, InputLeftElement } from "@chakra-ui/react";
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -32,8 +32,8 @@ const Index = () => {
   const [formattedEstimate, setFormattedEstimate] = useState("");
 
   const calculateLabor = () => hrs * laborRate;
-  const calculateTax = () => Math.ceil((parts + extras + shopSupplies + sublet) * 0.0825);
-  const calculateTotal = () => Math.ceil(parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax() + additionalParts - deductible);
+  const calculateTax = () => `$${Math.ceil((parts + extras + shopSupplies + sublet) * 0.0825).toFixed(2)}`;
+  const calculateTotal = () => `$${Math.ceil(parts + calculateLabor() + extras + shopSupplies + sublet + parseFloat(calculateTax().substring(1)) + additionalParts - deductible).toFixed(2)}`;
 
   const formatEstimate = () => {
     const laborSum = `${hrs}HRS X ${laborRate}/HR = $${calculateLabor().toFixed(2)}`;
@@ -56,8 +56,8 @@ ${formattedParts}
 Shop Supplies: $${shopSupplies.toFixed(2)}
 PARTS: $${parts.toFixed(2)}
 LABOR: $${calculateLabor().toFixed(2)}
-TAX (${taxRate}%): $${calculateTax().toFixed(2)}
-TOTAL: $${calculateTotal().toFixed(2)}
+TAX (${taxRate}%): $${calculateTax()}
+TOTAL: $${calculateTotal()}
 
 Formula to calculate Tax sum:
 Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
@@ -131,31 +131,67 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Heading as="h2" size="md" mb={2}>Hrs</Heading>
             <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
-            <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Sublet</Heading>
-            <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Extras</Heading>
-            <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Labor</Heading>
             <Input type="number" value={calculateLabor()} isReadOnly />
             <Heading as="h2" size="md" mb={2}>Roof Kit</Heading>
-            <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Roof Membrane</Heading>
-            <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>SLF LVL DICOR</Heading>
-            <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>NON LVL DICOR</Heading>
-            <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>ROOF SCREWS</Heading>
-            <Input type="number" value={roofScrews} onChange={(e) => setRoofScrews(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={roofScrews} onChange={(e) => setRoofScrews(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>GLUE</Heading>
-            <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
-            <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Parts</Heading>
-            <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
-            <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Tax</Heading>
             <Text>{calculateTax()}</Text>
             <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
