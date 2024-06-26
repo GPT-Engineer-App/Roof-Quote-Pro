@@ -80,9 +80,9 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         </Box>
       </Flex>
       <VStack spacing={4} width="100%">
-        <Heading as="h1" size="xl" textAlign="center" fontFamily="Dancing Script, cursive">
+        <Heading as="h1" size="xl" textAlign="center">
           ROOF REPAIR ESTIMATE
-          <Text fontSize="lg" fontFamily="Roboto, sans-serif">Simple</Text>
+          <Text fontSize="lg">Simple</Text>
         </Heading>
         <Divider />
         <Box width="100%">
@@ -145,7 +145,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>NON LVL DICOR</Heading>
+          <Heading as="h2" size="md" mb={2}>NON LVL DICIR</Heading>
           <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
