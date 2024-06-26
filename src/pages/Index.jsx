@@ -126,6 +126,8 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Textarea value={repairDescription} onChange={(e) => setRepairDescription(e.target.value)} />
             <Heading as="h2" size="md" mb={2}>Notes</Heading>
             <Textarea value={0} isReadOnly />
+          </Box>
+          <Box>
             <Heading as="h2" size="md" mb={2}>Hrs</Heading>
             <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
@@ -143,6 +145,8 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
             </InputGroup>
+            <Heading as="h2" size="md" mb={2}>Labor</Heading>
+            <Input type="number" value={calculateLabor()} isReadOnly />
             <Heading as="h2" size="md" mb={2}>Roof Kit</Heading>
             <InputGroup>
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
@@ -178,10 +182,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
             </InputGroup>
-          </Box>
-          <Box>
-            <Heading as="h2" size="md" mb={2}>Labor</Heading>
-            <Input type="number" value={calculateLabor()} isReadOnly />
             <Heading as="h2" size="md" mb={2}>Parts</Heading>
             <InputGroup>
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
