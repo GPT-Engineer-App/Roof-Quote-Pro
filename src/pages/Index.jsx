@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex } from "@chakra-ui/react";
+import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, Grid, GridItem } from "@chakra-ui/react";
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -67,7 +67,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
   };
 
   return (
-    <Container centerContent maxW="container.md" py={10}>
+    <Container centerContent maxW="container.xl" py={10}>
       <Flex width="100%" justifyContent="space-between" alignItems="center" mb={4}>
         <Image src="/images/new-company-logo.png" alt="Company Logo" boxSize="100px" />
         <Box textAlign="right">
@@ -85,113 +85,116 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Text fontSize="lg">Simple</Text>
         </Heading>
         <Divider />
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Estimate#</Heading>
-          <Input type="text" value={estimate} onChange={(e) => setEstimate(e.target.value)} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>First Name</Heading>
-          <Input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Last Name</Heading>
-          <Input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Phone Number</Heading>
-          <Input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Unit Description</Heading>
-          <Input type="text" value={unitDescription} onChange={(e) => setUnitDescription(e.target.value)} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>VIN#</Heading>
-          <Input type="text" value={vin} onChange={(e) => setVin(e.target.value)} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Advisor</Heading>
-          <Select placeholder="Select Service Advisor" value={advisor} onChange={(e) => setAdvisor(e.target.value)}>
-            <option value="Mark.W">Mark.W</option>
-            <option value="Alicia.E">Alicia.E</option>
-            <option value="Hunter.S">Hunter.S</option>
-          </Select>
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Payment Type</Heading>
-          <Select placeholder="Select option" value={customerPayType} onChange={(e) => setCustomerPayType(e.target.value)}>
-            <option value="extWarranty">Ext Warranty</option>
-            <option value="insurance">Insurance</option>
-            <option value="rvStation">RV Station</option>
-            <option value="warranty">Warranty</option>
-          </Select>
-        </Box>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} width="100%">
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Estimate#</Heading>
+            <Input type="text" value={estimate} onChange={(e) => setEstimate(e.target.value)} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>First Name</Heading>
+            <Input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Last Name</Heading>
+            <Input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Phone Number</Heading>
+            <Input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Unit Description</Heading>
+            <Input type="text" value={unitDescription} onChange={(e) => setUnitDescription(e.target.value)} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>VIN#</Heading>
+            <Input type="text" value={vin} onChange={(e) => setVin(e.target.value)} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Advisor</Heading>
+            <Select placeholder="Select Service Advisor" value={advisor} onChange={(e) => setAdvisor(e.target.value)}>
+              <option value="Mark.W">Mark.W</option>
+              <option value="Alicia.E">Alicia.E</option>
+              <option value="Hunter.S">Hunter.S</option>
+            </Select>
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Payment Type</Heading>
+            <Select placeholder="Select option" value={customerPayType} onChange={(e) => setCustomerPayType(e.target.value)}>
+              <option value="extWarranty">Ext Warranty</option>
+              <option value="insurance">Insurance</option>
+              <option value="rvStation">RV Station</option>
+              <option value="warranty">Warranty</option>
+            </Select>
+          </GridItem>
+          <GridItem colSpan={2}>
+            <Heading as="h2" size="md" mb={2}>Repair Description</Heading>
+            <Textarea value={repairDescription} onChange={(e) => setRepairDescription(e.target.value)} />
+          </GridItem>
+        </Grid>
         <Divider />
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Repair Description</Heading>
-          <Textarea value={repairDescription} onChange={(e) => setRepairDescription(e.target.value)} />
-        </Box>
-        <Divider />
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>ROOF KIT</Heading>
-          <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>ROOF MEMBRANE</Heading>
-          <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>SLF LVL DICOR</Heading>
-          <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>NON LVL DICIR</Heading>
-          <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>ROOF SCREWS</Heading>
-          <Input type="number" value={roofScrews} onChange={(e) => setRoofScrews(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>GLUE</Heading>
-          <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
-          <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Extras</Heading>
-          <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Sublet</Heading>
-          <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
-          <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Parts</Heading>
-          <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Hrs</Heading>
-          <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
-          <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Labor</Heading>
-          <Input type="number" value={calculateLabor()} isReadOnly />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Deductible</Heading>
-          <Input type="number" value={deductible} onChange={(e) => setDeductible(parseFloat(e.target.value))} />
-        </Box>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6} width="100%">
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>ROOF KIT</Heading>
+            <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>ROOF MEMBRANE</Heading>
+            <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>SLF LVL DICOR</Heading>
+            <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>NON LVL DICIR</Heading>
+            <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>ROOF SCREWS</Heading>
+            <Input type="number" value={roofScrews} onChange={(e) => setRoofScrews(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>GLUE</Heading>
+            <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
+            <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Extras</Heading>
+            <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Sublet</Heading>
+            <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
+            <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Parts</Heading>
+            <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Hrs</Heading>
+            <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
+            <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Labor</Heading>
+            <Input type="number" value={calculateLabor()} isReadOnly />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Deductible</Heading>
+            <Input type="number" value={deductible} onChange={(e) => setDeductible(parseFloat(e.target.value))} />
+          </GridItem>
+        </Grid>
         <Box width="100%">
           <HStack justifyContent="space-between">
             <Text fontSize="lg">Tax:</Text>
