@@ -19,10 +19,10 @@ const Index = () => {
   const [customerPayType, setCustomerPayType] = useState("");
   const [repairDescription, setRepairDescription] = useState("UPON INSPECTION, FOUND TRAILER TO BE DAMAGED: FOUND DAMAGE DONE TO MEMBRANE OF THE ROOF MEMBRANE ON TRAILER. POSSIBLY BY TREE BRANCH OR HAIL. NEED TO REMOVE ALL COMPONENTS (A/C UNITS, ATTIC VENTS, COVERS, ANTENNAS…ETC.) REMOVE MENBRANE. INSPECT OSB PLYWOOD FOR DAMAGE, REPLACE/OVERLAY IF NEEDED. LAY GLUE AND NEW MEMBRANE AND REINSTALL ALL COMPONENTS (CHECK FOR OPERATION).");
 
-  const [formattedEstimate, setFormattedEstimate] = useState("");
-
   const calculateTax = () => (parts + extras + shopSupplies + sublet) * (taxRate / 100);
   const calculateTotal = () => parts + labor + extras + shopSupplies + sublet + calculateTax();
+
+  const [formattedEstimate, setFormattedEstimate] = useState("");
 
   const formatEstimate = () => {
     const laborSum = `60HRS X 175/HR = $${labor.toFixed(2)}`;
@@ -35,24 +35,15 @@ const Index = () => {
       { name: "GLUE", price: 96.81 },
     ];
 
-    const formattedParts = partsList.map(part => `${part.name}: $${part.price.toFixed(2)}`).join("\n");
-    const formattedEstimate = `
-Formula to calculate labor sum:
-${laborSum}
+    const partsFormatted = partsList.map(part => `${part.name}: $${part.price.toFixed(2)}`).join("\n");
+    const shopSuppliesFormatted = `Shop Supplies: $${shopSupplies.toFixed(2)}`;
+    const partsTotalFormatted = `PARTS: $${parts.toFixed(2)}`;
+    const laborFormatted = `LABOR: $${labor.toFixed(2)}`;
+    const taxFormatted = `TAX (${taxRate}%): $${calculateTax().toFixed(2)}`;
+    const totalFormatted = `TOTAL: $${calculateTotal().toFixed(2)}`;
 
-${formattedParts}
-
-Shop Supplies: $${shopSupplies.toFixed(2)}
-PARTS: $${parts.toFixed(2)}
-LABOR: $${labor.toFixed(2)}
-TAX (${taxRate}%): $${calculateTax().toFixed(2)}
-TOTAL: $${calculateTotal().toFixed(2)}
-
-Formula to calculate Tax sum:
-Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
-    `;
-
-    setFormattedEstimate(formattedEstimate);
+    const formatted = `${laborSum}\n\n${partsFormatted}\n\n${shopSuppliesFormatted}\n${partsTotalFormatted}\n${laborFormatted}\n${taxFormatted}\n${totalFormatted}`;
+    setFormattedEstimate(formatted);
   };
 
   return (
@@ -146,11 +137,11 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Text fontSize="lg">${calculateTotal().toFixed(2)}</Text>
           </HStack>
         </Box>
-        <Button colorScheme="blue" onClick={formatEstimate}>Format Estimate</Button>
+        <Divider />
+        <Button onClick={formatEstimate}>Format Estimate</Button>
         {formattedEstimate && (
           <Box width="100%" mt={4} p={4} borderWidth="1px" borderRadius="md">
-            <Heading as="h2" size="md" mb={2}>Formatted Estimate</Heading>
-            <pre>{formattedEstimate}</pre>
+            <Text whiteSpace="pre-wrap">{formattedEstimate}</Text>
           </Box>
         )}
       </VStack>
