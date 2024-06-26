@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import { Container, VStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Container, VStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid, InputGroup, InputLeftElement, useColorModeValue, keyframes } from "@chakra-ui/react";
 import { saveAs } from 'file-saver';
+
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+`;
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -225,8 +231,28 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           </Box>
         )}
         <Flex width="100%" justifyContent="space-between" mt={4}>
-          <Button colorScheme="blue" onClick={saveEstimate}>Save Estimate</Button>
-          <Button colorScheme="blue" onClick={printEstimate}>Print Estimate</Button>
+          <Button
+            colorScheme={useColorModeValue("blue", "teal")}
+            bgGradient="linear(to-r, blue.400, blue.500, blue.600)"
+            _hover={{
+              bgGradient: "linear(to-r, blue.500, blue.600, blue.700)",
+              animation: `${pulse} 1s infinite`,
+            }}
+            onClick={saveEstimate}
+          >
+            Save Estimate
+          </Button>
+          <Button
+            colorScheme={useColorModeValue("blue", "teal")}
+            bgGradient="linear(to-r, blue.400, blue.500, blue.600)"
+            _hover={{
+              bgGradient: "linear(to-r, blue.500, blue.600, blue.700)",
+              animation: `${pulse} 1s infinite`,
+            }}
+            onClick={printEstimate}
+          >
+            Print Estimate
+          </Button>
         </Flex>
       </VStack>
     </Container>
