@@ -92,7 +92,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>VIN#</Heading>
-          <Input type="text" value={vin} onChange={(e) => setVin(e.target.value)} />
+          <Input type="text" value={vin} onChange={(e) => setVin(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Advisor</Heading>
@@ -110,10 +110,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <option value="rvStation">RV Station</option>
             <option value="warranty">Warranty</option>
           </Select>
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Deductible</Heading>
-          <Input type="number" placeholder="$" />
         </Box>
         <Divider />
         <Box width="100%">
@@ -180,6 +176,10 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Labor</Heading>
           <Input type="number" value={calculateLabor()} isReadOnly />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Deductible</Heading>
+          <Input type="number" placeholder="$" />
         </Box>
         <Box width="100%">
           <HStack justifyContent="space-between">
