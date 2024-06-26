@@ -180,6 +180,11 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
             </InputGroup>
+            <Heading as="h2" size="md" mb={2}>Labor</Heading>
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={calculateLabor()} isReadOnly />
+            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Parts</Heading>
             <InputGroup>
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
