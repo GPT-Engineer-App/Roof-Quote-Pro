@@ -3,11 +3,12 @@ import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, 
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
-  const [labor, setLabor] = useState(11940);
   const [extras, setExtras] = useState(150);
   const [taxRate, setTaxRate] = useState(8.25);
   const [shopSupplies, setShopSupplies] = useState(150);
   const [sublet, setSublet] = useState(0);
+  const [hrs, setHrs] = useState(60);
+  const [laborRate, setLaborRate] = useState(175);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -21,11 +22,12 @@ const Index = () => {
 
   const [formattedEstimate, setFormattedEstimate] = useState("");
 
-  const calculateTax = () => (parts + extras + shopSupplies + sublet) * (taxRate / 100);
-  const calculateTotal = () => parts + labor + extras + shopSupplies + sublet + calculateTax();
+  const calculateLabor = () => hrs * laborRate;
+  const calculateTax = () => (parts + extras + shopSupplies + sublet) * 0.0825;
+  const calculateTotal = () => parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax();
 
   const formatEstimate = () => {
-    const laborSum = `60HRS X 175/HR = $${labor.toFixed(2)}`;
+    const laborSum = `${hrs}HRS X ${laborRate}/HR = $${calculateLabor().toFixed(2)}`;
     const partsList = [
       { name: "ROOF MEMBRANE", price: 1825.14 },
       { name: "ROOF KIT", price: 485.26 },
@@ -44,7 +46,7 @@ ${formattedParts}
 
 Shop Supplies: $${shopSupplies.toFixed(2)}
 PARTS: $${parts.toFixed(2)}
-LABOR: $${labor.toFixed(2)}
+LABOR: $${calculateLabor().toFixed(2)}
 TAX (${taxRate}%): $${calculateTax().toFixed(2)}
 TOTAL: $${calculateTotal().toFixed(2)}
 
@@ -116,8 +118,16 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Hrs</Heading>
+          <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
+          <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Labor</Heading>
-          <Input type="number" value={labor} onChange={(e) => setLabor(parseFloat(e.target.value))} />
+          <Input type="number" value={calculateLabor()} isReadOnly />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Extras</Heading>
@@ -132,7 +142,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Tax Rate (%)</Heading>
+          <Heading as="h2" size="md" mb={2}>Tax</Heading>
           <Input type="number" value={taxRate} onChange={(e) => setTaxRate(parseFloat(e.target.value))} />
         </Box>
         <Divider />
