@@ -80,7 +80,10 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         </Box>
       </Flex>
       <VStack spacing={4} width="100%">
-        <Heading as="h1" size="xl">RV Repair Estimate Builder</Heading>
+        <Heading as="h1" size="xl" textAlign="center">
+          ROOF REPAIR ESTIMATE
+          <Text fontSize="lg">Simple</Text>
+        </Heading>
         <Divider />
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Estimate#</Heading>
