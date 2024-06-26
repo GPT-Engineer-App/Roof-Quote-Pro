@@ -17,7 +17,7 @@ const Index = () => {
   const [estimate, setEstimate] = useState("");
   const [advisor, setAdvisor] = useState("");
   const [customerPayType, setCustomerPayType] = useState("");
-  const [repairDescription, setRepairDescription] = useState("Default Repair Estimate description of work to be performed. Advisor should be able to add to or modify any portion of the repair description.");
+  const [repairDescription, setRepairDescription] = useState("UPON INSPECTION, FOUND TRAILER TO BE DAMAGED: FOUND DAMAGE DONE TO MEMBRANE OF THE ROOF MEMBRANE ON TRAILER. POSSIBLY BY TREE BRANCH OR HAIL. NEED TO REMOVE ALL COMPONENTS (A/C UNITS, ATTIC VENTS, COVERS, ANTENNAS…ETC.) REMOVE MENBRANE. INSPECT OSB PLYWOOD FOR DAMAGE, REPLACE/OVERLAY IF NEEDED. LAY GLUE AND NEW MEMBRANE AND REINSTALL ALL COMPONENTS (CHECK FOR OPERATION).");
 
   const calculateTax = () => (parts + labor + extras + shopSupplies + sublet) * (taxRate / 100);
   const calculateTotal = () => parts + labor + extras + shopSupplies + sublet + calculateTax();
