@@ -9,6 +9,14 @@ const Index = () => {
   const [shopSupplies, setShopSupplies] = useState(150);
   const [sublet, setSublet] = useState(0);
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [unitDescription, setUnitDescription] = useState("");
+  const [vin, setVin] = useState("");
+  const [estimate, setEstimate] = useState("");
+  const [advisor, setAdvisor] = useState("");
+
   const calculateTax = () => (parts + labor + extras + shopSupplies + sublet) * (taxRate / 100);
   const calculateTotal = () => parts + labor + extras + shopSupplies + sublet + calculateTax();
 
@@ -16,6 +24,35 @@ const Index = () => {
     <Container centerContent maxW="container.md" py={10}>
       <VStack spacing={4} width="100%">
         <Heading as="h1" size="xl">RV Repair Estimate Builder</Heading>
+        <Divider />
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>First Name</Heading>
+          <Input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Last Name</Heading>
+          <Input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Phone Number</Heading>
+          <Input type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Unit Description</Heading>
+          <Input type="text" value={unitDescription} onChange={(e) => setUnitDescription(e.target.value)} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>VIN#</Heading>
+          <Input type="text" value={vin} onChange={(e) => setVin(e.target.value)} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Estimate#</Heading>
+          <Input type="text" value={estimate} onChange={(e) => setEstimate(e.target.value)} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Advisor</Heading>
+          <Input type="text" value={advisor} onChange={(e) => setAdvisor(e.target.value)} />
+        </Box>
         <Divider />
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Parts</Heading>
