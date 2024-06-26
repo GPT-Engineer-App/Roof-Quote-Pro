@@ -90,7 +90,13 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
   return (
     <Container centerContent maxW="container.xl" py={10}>
       <Flex width="100%" justifyContent="space-between" alignItems="center" mb={4} position="relative">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAACtCAYAAACJDrnCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhezP0HgGTXXeeL/6qqq7srdM6Tg2ZGWbKyZCHJlnPGxgmD18AuBnZJ+zYRV7uAzS5heYC9sARjMMY2..." alt="RV Station Logo" style={{ width: '100%', height: 'auto' }} />
+        <Box
+          backgroundImage="url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAACtCAYAAACJDrnCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAP+lSURBVHhezP0HgGTXXeeL/6qqq7srdM6Tg2ZGWbKyZCHJlnPGxgmD18AuBnZJ+zYRV7uAzS5heYC9sARjMMY2...')"
+          backgroundSize="cover"
+          backgroundPosition="center"
+          width="100%"
+          height="auto"
+        />
         <Box textAlign="right" position="absolute" right="10px" top="10px" color="white">
           <Text>Mark Williamson</Text>
           <Text>Service Advisor</Text>
