@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, VStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex, SimpleGrid, InputGroup, InputLeftElement, useColorModeValue, keyframes } from "@chakra-ui/react";
 import { saveAs } from 'file-saver';
+import newCompanyLogo from "../../public/images/new-company-logo.png";
 
 const pulse = keyframes`
   0% { transform: scale(1); }
@@ -89,9 +90,9 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
 
   return (
     <Container centerContent maxW="container.xl" py={10}>
-      <Flex width="100%" justifyContent="space-between" alignItems="center" mb={4}>
-        <Image src="/images/company-logo.png" alt="Company Logo" boxSize="100px" />
-        <Box textAlign="right">
+      <Flex width="100%" justifyContent="space-between" alignItems="center" mb={4} position="relative">
+        <Image src={newCompanyLogo} alt="Company Logo" width="100%" height="auto" />
+        <Box textAlign="right" position="absolute" right="10px" top="10px" color="white">
           <Text>Mark Williamson</Text>
           <Text>Service Advisor</Text>
           <Text>RV Station</Text>
