@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea } from "@chakra-ui/react";
+import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button } from "@chakra-ui/react";
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -19,8 +19,40 @@ const Index = () => {
   const [customerPayType, setCustomerPayType] = useState("");
   const [repairDescription, setRepairDescription] = useState("UPON INSPECTION, FOUND TRAILER TO BE DAMAGED: FOUND DAMAGE DONE TO MEMBRANE OF THE ROOF MEMBRANE ON TRAILER. POSSIBLY BY TREE BRANCH OR HAIL. NEED TO REMOVE ALL COMPONENTS (A/C UNITS, ATTIC VENTS, COVERS, ANTENNAS…ETC.) REMOVE MENBRANE. INSPECT OSB PLYWOOD FOR DAMAGE, REPLACE/OVERLAY IF NEEDED. LAY GLUE AND NEW MEMBRANE AND REINSTALL ALL COMPONENTS (CHECK FOR OPERATION).");
 
+  const [formattedEstimate, setFormattedEstimate] = useState("");
+
   const calculateTax = () => (parts + labor + extras + shopSupplies + sublet) * (taxRate / 100);
   const calculateTotal = () => parts + labor + extras + shopSupplies + sublet + calculateTax();
+
+  const formatEstimate = () => {
+    const laborSum = `60HRS X 175/HR = $${labor.toFixed(2)}`;
+    const partsList = [
+      { name: "ROOF MEMBRANE", price: 1825.14 },
+      { name: "ROOF KIT", price: 485.26 },
+      { name: "SLF LVL DICOR", price: 685.16 },
+      { name: "NON LVL DICIR", price: 355.72 },
+      { name: "ROOF SCREWS", price: 76.28 },
+      { name: "GLUE", price: 96.81 },
+    ];
+
+    const formattedParts = partsList.map(part => `${part.name}: $${part.price.toFixed(2)}`).join("\n");
+    const formattedEstimate = `
+${laborSum}
+
+${formattedParts}
+
+Shop Supplies: $${shopSupplies.toFixed(2)}
+PARTS: $${parts.toFixed(2)}
+LABOR: $${labor.toFixed(2)}
+TAX (${taxRate}%): $${calculateTax().toFixed(2)}
+TOTAL: $${calculateTotal().toFixed(2)}
+
+Formula to calculate Tax sum:
+Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
+    `;
+
+    setFormattedEstimate(formattedEstimate);
+  };
 
   return (
     <Container centerContent maxW="container.md" py={10}>
@@ -113,6 +145,14 @@ const Index = () => {
             <Text fontSize="lg">${calculateTotal().toFixed(2)}</Text>
           </HStack>
         </Box>
+        <Divider />
+        <Button colorScheme="blue" onClick={formatEstimate}>Format Estimate</Button>
+        {formattedEstimate && (
+          <Box width="100%" mt={4} p={4} borderWidth="1px" borderRadius="md">
+            <Heading as="h2" size="md" mb={2}>Formatted Estimate</Heading>
+            <Textarea value={formattedEstimate} readOnly height="300px" />
+          </Box>
+        )}
       </VStack>
     </Container>
   );
