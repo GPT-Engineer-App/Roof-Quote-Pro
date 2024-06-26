@@ -32,8 +32,8 @@ const Index = () => {
   const [formattedEstimate, setFormattedEstimate] = useState("");
 
   const calculateLabor = () => hrs * laborRate;
-  const calculateTax = () => (parts + extras + shopSupplies + sublet) * 0.0825;
-  const calculateTotal = () => parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax() + additionalParts - deductible;
+  const calculateTax = () => Math.ceil((parts + extras + shopSupplies + sublet) * 0.0825);
+  const calculateTotal = () => Math.ceil(parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax() + additionalParts - deductible);
 
   const formatEstimate = () => {
     const laborSum = `${hrs}HRS X ${laborRate}/HR = $${calculateLabor().toFixed(2)}`;
@@ -152,8 +152,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
             <Heading as="h2" size="md" mb={2}>Extras</Heading>
             <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
-          </Box>
-          <Box>
             <Heading as="h2" size="md" mb={2}>Tax</Heading>
             <Input type="number" value={calculateTax()} isReadOnly />
             <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
