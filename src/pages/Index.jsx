@@ -84,7 +84,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
       <VStack spacing={4} width="100%">
         <Heading as="h1" size="xl" textAlign="center">
           ROOF REPAIR ESTIMATE
-          <Text fontSize="lg">Simple</Text>
         </Heading>
         <Divider />
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} width="100%">
