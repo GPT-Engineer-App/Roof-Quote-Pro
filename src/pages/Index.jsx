@@ -163,14 +163,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
           </GridItem>
           <GridItem>
-            <Heading as="h2" size="md" mb={2}>Extras</Heading>
-            <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
-          </GridItem>
-          <GridItem>
-            <Heading as="h2" size="md" mb={2}>Sublet</Heading>
-            <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
-          </GridItem>
-          <GridItem>
             <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
             <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
           </GridItem>
@@ -187,25 +179,39 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
           </GridItem>
           <GridItem>
+            <Heading as="h2" size="md" mb={2}>Sublet</Heading>
+            <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Extras</Heading>
+            <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
+          </GridItem>
+          <GridItem>
             <Heading as="h2" size="md" mb={2}>Labor</Heading>
             <Input type="number" value={calculateLabor()} isReadOnly />
+          </GridItem>
+          <GridItem colSpan={2}>
+            <Heading as="h2" size="md" mb={2}>Notes</Heading>
+            <Textarea value={repairDescription} onChange={(e) => setRepairDescription(e.target.value)} />
+          </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Tax</Heading>
+            <Input type="number" value={calculateTax()} isReadOnly />
           </GridItem>
           <GridItem>
             <Heading as="h2" size="md" mb={2}>Deductible</Heading>
             <Input type="number" value={deductible} onChange={(e) => setDeductible(parseFloat(e.target.value))} />
           </GridItem>
+          <GridItem>
+            <Heading as="h2" size="md" mb={2}>Total</Heading>
+            <Input type="number" value={calculateTotal()} isReadOnly />
+          </GridItem>
         </Grid>
-        <Box width="100%">
-          <HStack justifyContent="space-between">
-            <Text fontSize="lg">Tax:</Text>
-            <Text fontSize="lg">${calculateTax().toFixed(2)}</Text>
-          </HStack>
-          <HStack justifyContent="space-between">
-            <Text fontSize="lg">Total:</Text>
-            <Text fontSize="lg">${calculateTotal().toFixed(2)}</Text>
-          </HStack>
-        </Box>
-        <Button colorScheme="blue" onClick={formatEstimate}>Format Estimate</Button>
+        <Divider />
+        <HStack spacing={4} width="100%" justifyContent="center">
+          <Button colorScheme="blue">Save Estimate</Button>
+          <Button colorScheme="blue">Print Estimate</Button>
+        </HStack>
         {formattedEstimate && (
           <Box width="100%" mt={4} p={4} borderWidth="1px" borderRadius="md">
             <Heading as="h2" size="md" mb={2}>Formatted Estimate</Heading>
