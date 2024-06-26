@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import '@fontsource/roboto';
+import '@fontsource/dancing-script'; // Add this line to import the new font
 
 const colors = {
   brand: {
@@ -15,7 +16,7 @@ const colors = {
 const theme = extendTheme({
   colors,
   fonts: {
-    heading: 'Roboto, sans-serif',
+    heading: 'Dancing Script, cursive', // Use the new font for headings
     body: 'Roboto, sans-serif',
   },
 });
