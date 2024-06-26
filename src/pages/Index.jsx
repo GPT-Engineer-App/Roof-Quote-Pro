@@ -143,6 +143,13 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
             </InputGroup>
+            <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
+            <InputGroup>
+              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
+              <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
+            </InputGroup>
+            <Heading as="h2" size="md" mb={2}>Labor</Heading>
+            <Input type="number" value={calculateLabor()} isReadOnly />
             <Heading as="h2" size="md" mb={2}>Roof Kit</Heading>
             <InputGroup>
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
@@ -173,15 +180,8 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
               <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
             </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
-            </InputGroup>
           </Box>
           <Box>
-            <Heading as="h2" size="md" mb={2}>Labor</Heading>
-            <Input type="number" value={calculateLabor()} isReadOnly />
             <Heading as="h2" size="md" mb={2}>Parts</Heading>
             <InputGroup>
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
