@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button } from "@chakra-ui/react";
+import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea, Button, Image, Flex } from "@chakra-ui/react";
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -68,6 +68,17 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
 
   return (
     <Container centerContent maxW="container.md" py={10}>
+      <Flex width="100%" justifyContent="space-between" alignItems="center" mb={4}>
+        <Image src="/images/company-logo.png" alt="Company Logo" boxSize="100px" />
+        <Box textAlign="right">
+          <Text>Mark Williamson</Text>
+          <Text>Service Advisor</Text>
+          <Text>RV Station</Text>
+          <Text>Colbert, OK 74733</Text>
+          <Text>580-579-5036</Text>
+          <Text>mark@rvstation.com</Text>
+        </Box>
+      </Flex>
       <VStack spacing={4} width="100%">
         <Heading as="h1" size="xl">RV Repair Estimate Builder</Heading>
         <Divider />
