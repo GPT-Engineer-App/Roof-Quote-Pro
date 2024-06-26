@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select } from "@chakra-ui/react";
+import { Container, VStack, HStack, Input, Text, Box, Heading, Divider, Select, Textarea } from "@chakra-ui/react";
 
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
@@ -17,6 +17,7 @@ const Index = () => {
   const [estimate, setEstimate] = useState("");
   const [advisor, setAdvisor] = useState("");
   const [customerPayType, setCustomerPayType] = useState("");
+  const [repairDescription, setRepairDescription] = useState("Default Repair Estimate description of work to be performed");
 
   const calculateTax = () => (parts + labor + extras + shopSupplies + sublet) * (taxRate / 100);
   const calculateTotal = () => parts + labor + extras + shopSupplies + sublet + calculateTax();
@@ -70,6 +71,11 @@ const Index = () => {
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Deductible</Heading>
           <Input type="number" placeholder="$" />
+        </Box>
+        <Divider />
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Repair Description</Heading>
+          <Textarea value={repairDescription} onChange={(e) => setRepairDescription(e.target.value)} />
         </Box>
         <Divider />
         <Box width="100%">
