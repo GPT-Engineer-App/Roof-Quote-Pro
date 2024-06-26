@@ -92,7 +92,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>VIN#</Heading>
-          <Input type="text" value={vin} onChange={(e) => setVin(e.target.value))} />
+          <Input type="text" value={vin} onChange={(e) => setVin(e.target.value)} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Advisor</Heading>
