@@ -112,6 +112,16 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               <option value="rvStation">RV Station</option>
               <option value="warranty">Warranty</option>
             </Select>
+            <Heading as="h2" size="md" mb={2}>Deductible</Heading>
+            <Select placeholder="Select Deductible" value={deductible} onChange={(e) => setDeductible(parseFloat(e.target.value))}>
+              <option value={200}>$200</option>
+              <option value={250}>$250</option>
+              <option value={500}>$500</option>
+              <option value={750}>$750</option>
+              <option value={1000}>$1000</option>
+              <option value={1500}>$1500</option>
+              <option value={2000}>$2000</option>
+            </Select>
             <Heading as="h2" size="md" mb={2}>Repair Description</Heading>
             <Textarea value={repairDescription} onChange={(e) => setRepairDescription(e.target.value)} />
           </Box>
