@@ -145,7 +145,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>NON LVL DICIR</Heading>
+          <Heading as="h2" size="md" mb={2}>NON LVL DICOR</Heading>
           <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
