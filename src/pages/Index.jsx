@@ -17,7 +17,7 @@ const Index = () => {
   const [estimate, setEstimate] = useState("");
   const [advisor, setAdvisor] = useState("");
   const [customerPayType, setCustomerPayType] = useState("");
-  const [repairDescription, setRepairDescription] = useState("Default Repair Estimate description of work to be performed");
+  const [repairDescription, setRepairDescription] = useState("Default Repair Estimate description of work to be performed. Advisor should be able to add to or modify any portion of the repair description.");
 
   const calculateTax = () => (parts + labor + extras + shopSupplies + sublet) * (taxRate / 100);
   const calculateTotal = () => parts + labor + extras + shopSupplies + sublet + calculateTax();
