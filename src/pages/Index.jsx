@@ -92,7 +92,7 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
     <Container centerContent maxW="container.xl" py={10}>
       <Flex width="100%" justifyContent="space-between" alignItems="center" mb={4} position="relative">
         <Image src={newCompanyLogo} alt="Company Logo" width="100%" height="auto" />
-        <Box textAlign="right" position="absolute" right="10px" top="10px" color="black">
+        <Box textAlign="right" position="absolute" right="10px" top="10px" color="white">
           <Text>Mark Williamson</Text>
           <Text>Service Advisor</Text>
           <Text>RV Station</Text>
