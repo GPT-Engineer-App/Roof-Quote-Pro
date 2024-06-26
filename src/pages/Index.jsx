@@ -122,44 +122,12 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         </Box>
         <Divider />
         <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Parts</Heading>
-          <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Hrs</Heading>
-          <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
-          <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Labor</Heading>
-          <Input type="number" value={calculateLabor()} isReadOnly />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Extras</Heading>
-          <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
-          <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Sublet</Heading>
-          <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Tax</Heading>
-          <Input type="number" value={taxRate} onChange={(e) => setTaxRate(parseFloat(e.target.value))} />
+          <Heading as="h2" size="md" mb={2}>ROOF KIT</Heading>
+          <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>ROOF MEMBRANE</Heading>
           <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
-        </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>ROOF KIT</Heading>
-          <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
         </Box>
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>SLF LVL DICOR</Heading>
@@ -181,7 +149,38 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
           <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
         </Box>
-        <Divider />
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Extras</Heading>
+          <Input type="number" value={extras} onChange={(e) => setExtras(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Sublet</Heading>
+          <Input type="number" value={sublet} onChange={(e) => setSublet(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Shop Supplies</Heading>
+          <Input type="number" value={shopSupplies} onChange={(e) => setShopSupplies(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Parts</Heading>
+          <Input type="number" value={parts} onChange={(e) => setParts(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Tax</Heading>
+          <Input type="number" value={taxRate} onChange={(e) => setTaxRate(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Hrs</Heading>
+          <Input type="number" value={hrs} onChange={(e) => setHrs(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Labor/Hr</Heading>
+          <Input type="number" value={laborRate} onChange={(e) => setLaborRate(parseFloat(e.target.value))} />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Labor</Heading>
+          <Input type="number" value={calculateLabor()} isReadOnly />
+        </Box>
         <Box width="100%">
           <HStack justifyContent="space-between">
             <Text fontSize="lg">Tax:</Text>
