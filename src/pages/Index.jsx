@@ -111,10 +111,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
             <option value="warranty">Warranty</option>
           </Select>
         </Box>
-        <Box width="100%">
-          <Heading as="h2" size="md" mb={2}>Deductible</Heading>
-          <Input type="number" placeholder="$" />
-        </Box>
         <Divider />
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Repair Description</Heading>
@@ -180,6 +176,10 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
         <Box width="100%">
           <Heading as="h2" size="md" mb={2}>Labor</Heading>
           <Input type="number" value={calculateLabor()} isReadOnly />
+        </Box>
+        <Box width="100%">
+          <Heading as="h2" size="md" mb={2}>Deductible</Heading>
+          <Input type="number" placeholder="$" />
         </Box>
         <Box width="100%">
           <HStack justifyContent="space-between">
