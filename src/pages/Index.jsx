@@ -8,12 +8,6 @@ const pulse = keyframes`
   100% { transform: scale(1); }
 `;
 
-const neonGlow = keyframes`
-  0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 55px #0ff; }
-  50% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 55px #0ff; }
-  100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 55px #0ff; }
-`;
-
 const Index = () => {
   const [parts, setParts] = useState(3524.37);
   const [extras, setExtras] = useState(150);
@@ -95,18 +89,15 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
 
   return (
     <Container centerContent maxW="container.xl" py={10}>
-      <Box position="relative" width="100%" height="150px" bg="gray.800">
+      <Box position="relative" width="100%" height="150px">
         <Image src="/images/new-company-logo.png" alt="Company Logo" objectFit="cover" width="100%" height="100%" />
-        <Box position="absolute" top="0" right="0" p={4} color="white" textAlign="right">
+        <Box position="absolute" top="0" right="0" p={4} color="black" textAlign="right">
           <Text>Mark Williamson</Text>
           <Text>Service Advisor</Text>
           <Text>RV Station</Text>
           <Text>Colbert, OK 74733</Text>
           <Text>580-579-5036</Text>
           <Text>mark@rvstation.com</Text>
-        </Box>
-        <Box position="absolute" bottom="0" left="0" p={4} color="cyan.400" textAlign="left" fontSize="2xl" fontWeight="bold" animation={`${neonGlow} 1.5s ease-in-out infinite`}>
-          RV Station
         </Box>
       </Box>
       <VStack spacing={4} width="100%">
