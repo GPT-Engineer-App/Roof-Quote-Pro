@@ -23,14 +23,6 @@ const Index = () => {
   const [hrs, setHrs] = useState(60);
   const [laborRate, setLaborRate] = useState(175);
 
-  const [roofMembrane, setRoofMembrane] = useState(1825.14);
-  const [roofKit, setRoofKit] = useState(485.26);
-  const [slfLvlDicor, setSlfLvlDicor] = useState(685.16);
-  const [nonLvlDicir, setNonLvlDicir] = useState(355.72);
-  const [roofScrews, setRoofScrews] = useState(76.28);
-  const [glue, setGlue] = useState(96.81);
-  const [additionalParts, setAdditionalParts] = useState(0);
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -47,8 +39,8 @@ const Index = () => {
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
 
   const calculateLabor = () => hrs * laborRate;
-  const calculateTax = () => `$${Math.ceil((parts + extras + shopSupplies + sublet) * 0.0825).toFixed(2)}`;
-  const calculateTotal = () => `$${Math.ceil(parts + calculateLabor() + extras + shopSupplies + sublet + parseFloat(calculateTax().substring(1)) + additionalParts - deductible).toFixed(2)}`;
+  const calculateTax = () => (parts + extras + shopSupplies + sublet) * (taxRate / 100);
+  const calculateTotal = () => parts + calculateLabor() + extras + shopSupplies + sublet + calculateTax() + additionalParts - deductible;
 
   const formatEstimate = () => {
     const laborSum = `${hrs}HRS X ${laborRate}/HR = $${calculateLabor().toFixed(2)}`;
@@ -71,8 +63,8 @@ ${formattedParts}
 Shop Supplies: $${shopSupplies.toFixed(2)}
 PARTS: $${parts.toFixed(2)}
 LABOR: $${calculateLabor().toFixed(2)}
-TAX (${taxRate}%): $${calculateTax()}
-TOTAL: $${calculateTotal()}
+TAX (${taxRate}%): $${calculateTax().toFixed(2)}
+TOTAL: $${calculateTotal().toFixed(2)}
 
 Formula to calculate Tax sum:
 Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
@@ -88,9 +80,13 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
 
   const printEstimate = () => {
     const printWindow = window.open("", "_blank");
-    printWindow.document.write(`<pre>${formattedEstimate}</pre>`);
-    printWindow.document.close();
-    printWindow.print();
+    if (printWindow) {
+      printWindow.document.write(`<pre>${formattedEstimate}</pre>`);
+      printWindow.document.close();
+      printWindow.print();
+    } else {
+      alert("Please allow popups to print the estimate.");
+    }
   };
 
   return (
@@ -177,46 +173,6 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           <Box>
             <Heading as="h2" size="md" mb={2}>Date</Heading>
             <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-            <Heading as="h2" size="md" mb={2}>Roof Kit</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={roofKit} onChange={(e) => setRoofKit(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Roof Membrane</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={roofMembrane} onChange={(e) => setRoofMembrane(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>SLF LVL DICOR</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={slfLvlDicor} onChange={(e) => setSlfLvlDicor(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>NON LVL DICOR</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={nonLvlDicir} onChange={(e) => setNonLvlDicir(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>ROOF SCREWS</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={roofScrews} onChange={(e) => setRoofScrews(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>GLUE</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={glue} onChange={(e) => setGlue(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Additional Parts</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={additionalParts} onChange={(e) => setAdditionalParts(parseFloat(e.target.value))} />
-            </InputGroup>
-            <Heading as="h2" size="md" mb={2}>Labor</Heading>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
-              <Input type="number" value={calculateLabor()} isReadOnly />
-            </InputGroup>
             <Heading as="h2" size="md" mb={2}>Parts</Heading>
             <InputGroup>
               <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em" children="$" />
@@ -236,9 +192,9 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
           </Box>
         )}
         <Heading as="h2" size="md" mb={2}>Tax</Heading>
-        <Text>{calculateTax()}</Text>
+        <Text>${calculateTax().toFixed(2)}</Text>
         <Heading as="h2" size="md" mb={2}>Total Estimate</Heading>
-        <Text>{calculateTotal()}</Text>
+        <Text>${calculateTotal().toFixed(2)}</Text>
         <Flex width="100%" justifyContent="space-between" mt={4}>
           <Button
             colorScheme={useColorModeValue("blue", "teal")}
@@ -247,7 +203,10 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               bgGradient: "linear(to-r, blue.500, blue.600, blue.700)",
               animation: `${pulse} 1s infinite`,
             }}
-            onClick={saveEstimate}
+            onClick={() => {
+              formatEstimate();
+              saveEstimate();
+            }}
           >
             Save Estimate
           </Button>
@@ -258,7 +217,10 @@ Total sum from parts X ${taxRate}% = Tax. Labor cannot be taxed.
               bgGradient: "linear(to-r, blue.500, blue.600, blue.700)",
               animation: `${pulse} 1s infinite`,
             }}
-            onClick={printEstimate}
+            onClick={() => {
+              formatEstimate();
+              printEstimate();
+            }}
           >
             Print Estimate
           </Button>
